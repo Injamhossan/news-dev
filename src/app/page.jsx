@@ -19,17 +19,19 @@ export default function Home() {
     const loadNews = async () => {
       setLoading(true);
       try {
-        const params = new URLSearchParams({
-            country,
-            category,
-            ...(source && { source }),
-        });
-
-        const res = await fetch(`api/news?${params}`);
+        // making the api url manually
+        let url = `api/news?country=${country}&category=${category}`;
+        
+        if (source) {
+          url = url + `&source=${source}`;
+        }
+        
+        // calling the api
+        const res = await fetch(url);
         const data = await res.json();
         setArticles(Array.isArray(data.articles) ? data.articles : []);
       } catch(err){
-        console.error("Error Loading News", err);
+        console.log("Error Loading News", err);
         setArticles([]);
       };
       setLoading(false);

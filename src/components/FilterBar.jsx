@@ -8,19 +8,17 @@ export default function FilterBar({
 }) {
     return (
         <div className="flex flex-col md:flex-row gap-4 mb-8">
-            {/* Search Input */}
             <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                 <input 
                     type="text" 
                     className="input input-bordered w-full pl-10 bg-white border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all text-gray-800 rounded-xl"
-                    value={source} // Re-using source as search term for now, will update page logic
+                    value={source} 
                     onChange={(e) => setSource(e.target.value)}
                     placeholder="Search news..."
                 />
             </div>
 
-            {/* Category */}
             <select 
                 className="select select-bordered bg-white border-gray-200 text-gray-700 rounded-xl md:w-48" 
                 value={category} 
@@ -35,7 +33,6 @@ export default function FilterBar({
                 <option value="health">Health</option>
             </select>
                 
-            {/* Country */}
             <select 
                 className="select select-bordered bg-white border-gray-200 text-gray-700 rounded-xl md:w-40" 
                 value={country} 
